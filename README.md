@@ -21,6 +21,29 @@ JOBREADY_USER=your_user_name
 JOBREADY_KEY=your_secret_key
 ```
 
+Available methods
+-------------
+`where` - adds entity's parameters to request
+
+`find` - gets single entity
+
+`findBulk` - retrieve entities by array of uris
+
+`get` - gets list of entities
+
+`uri` - gets generated uri
+
+`url` - gets generated url
+
+`create`
+
+`update`
+
+`getResponse` - manually sending get request
+
+`postResponse` - manually sending post request
+
+
 Examples
 -------------
 **Find**
@@ -69,6 +92,31 @@ $payload = [
     Trainers::FIELD_IND_TRAINER => true,
 ];
 $data = (new Trainers)->update('9804', $payload);    
+```
+
+**Manually creating**
+
+```php
+use Yurich84\JobReadyApi\Entities\Events;
+use \Carbon\Carbon;
+...
+
+$course_number = '99AUS999';
+
+$date = Carbon::now()->addWeeks(2)->format(JobReady::DATE_FORMAT);
+
+$payload = [
+    'event' => [
+        Events::FIELD_TITLE => 'Test Event',
+        Events::FIELD_EVENT_DATE => $date,
+        Events::FIELD_START_TIME => '09:00:00',
+        Events::FIELD_END_TIME => '15:00:00',
+        Events::FIELD_ALL_STAFF => true,
+        Events::FIELD_ALL_STUDENTS => true,
+    ]
+];
+
+$data = (new Events)->postResponse("courses/{$course_number}/events", $payload);
 ```
 
 License
