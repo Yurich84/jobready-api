@@ -71,5 +71,5 @@ $payload = [
 $data = (new Trainers)->update('9804', $payload);    
 ```
 
-##License
+License
 [MIT](https://raw.github.com/bigperson/laravel-vk-geo/master/LICENSE)
