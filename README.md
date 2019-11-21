@@ -62,6 +62,7 @@ use Yurich84\JobReadyApi\Entities\Courses;
 
 ```php
 use Yurich84\JobReadyApi\Entities\Events;
+use Yurich84\JobReadyApi\JobReady;
 use \Carbon\Carbon;
 ...
 $events = (new Events)
@@ -99,6 +100,7 @@ $data = (new Trainers)->update('9804', $payload);
 
 ```php
 use Yurich84\JobReadyApi\Entities\Events;
+use Yurich84\JobReadyApi\JobReady;
 use \Carbon\Carbon;
 ...
 
@@ -120,5 +122,5 @@ $payload = [
 $data = (new Events)->postResponse("courses/{$course_number}/events", $payload);
 ```
 
-License
+**License**
 [MIT](https://raw.github.com/bigperson/laravel-vk-geo/master/LICENSE)
