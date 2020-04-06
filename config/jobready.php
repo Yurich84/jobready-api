@@ -10,5 +10,5 @@ return [
         'Accept' => 'application/json'
     ],
 
-    'base_url' => 'https://austcare.jobreadyplus.com/webservice/'
+    'base_url' => env('JOBREADY_URL')
 ];
