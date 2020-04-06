@@ -20,7 +20,7 @@ Add the following lines to `.env`
 ```
 JOBREADY_USER=your_user_name
 JOBREADY_KEY=your_secret_key
-JOBREADY_URL=your_domain.jobreadyplus.com
+JOBREADY_URL=your_domain.jobreadyplus.com/webservice/
 ```
 
 Available methods
