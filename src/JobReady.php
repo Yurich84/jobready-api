@@ -15,7 +15,6 @@ class JobReady {
     const CONFIG_KEY = 'key';
     const CONFIG_USER = 'user';
     const CONFIG_BASE_URL = 'base_url';
-    const CONFIG_HEADER = 'header';
 
     const PARAMETER_OFFSET = 0;
     const PARAMETER_LIMIT = 100;
@@ -170,5 +169,4 @@ class JobReady {
         $json_upd = str_replace('{}', '""', $json);
         return json_decode($json_upd, TRUE);
     }
-
 }
