@@ -181,16 +181,20 @@ class Parties extends JobReadyService implements EntityInterface
      */
     protected function generatePayload(array $data): array
     {
+        //TODO: array_merge defaults against data, use models?
+        $party = [
+            self::FIELD_FIRST_NAME => $data['first-name'],
+            self::FIELD_SURNAME => $data['surname'],
+            self::FIELD_TYPE => self::PARTY_TYPE_PERSON,
+            self::FIELD_CONTACT_METHOD => 'Email',
+            self::FIELD_GENDER => $data['gender'],
+            self::FIELD_BIRTH_DATE => '1993-01-01'
+        ];
+        if (array_key_exists(self::FIELD_ID, $data)) {
+            $party[self::FIELD_ID] = $data[self::FIELD_ID];
+        }
         return [
-            'party' => [
-                self::FIELD_FIRST_NAME => $data['first-name'],
-                self::FIELD_SURNAME => $data['surname'],
-                self::FIELD_ID => $data['party-identifier'],
-                self::FIELD_TYPE => self::PARTY_TYPE_PERSON,
-                self::FIELD_CONTACT_METHOD => 'Email',
-                self::FIELD_GENDER => $data['gender'],
-                self::FIELD_BIRTH_DATE => '1993-01-01',
-            ]
+            'party' => $party
         ];
     }
 
