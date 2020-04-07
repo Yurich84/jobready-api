@@ -48,9 +48,12 @@ class ContactDetails extends JobReadyService implements EntityInterface
     public function createContacts(array $data)
     {
         $partyIdentifier = $data['party-identifier'];
-
-        $this->postResponse("parties/{$partyIdentifier}/contact_detail", $this->getPayload($data, self::CONTACT_TYPE_EMAIL));
-        $this->postResponse("parties/{$partyIdentifier}/contact_detail", $this->getPayload($data, self::CONTACT_TYPE_MOBILE));
+        if (array_key_exists(strtolower(self::CONTACT_TYPE_EMAIL), $data)) {
+            $this->postResponse("parties/{$partyIdentifier}/contact_detail", $this->getPayload($data, self::CONTACT_TYPE_EMAIL));
+        }
+        if (array_key_exists(strtolower(self::CONTACT_TYPE_MOBILE), $data)) {
+            $this->postResponse("parties/{$partyIdentifier}/contact_detail", $this->getPayload($data, self::CONTACT_TYPE_MOBILE));
+        }
     }
 
     /**
